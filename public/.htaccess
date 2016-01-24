@@ -1,0 +1,31 @@
+Options -Indexes
+
+RewriteEngine On
+
+RewriteBase /
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+#PAGE
+
+#RewriteRule ^portfolio/([0-9a-zA-Z-]+)-([0-9]+)-([0-9]+)\.html$ ajax.php?module=portfolio&action=view&id=$3&start=$2&name=$1 [L]
+#RewriteRule ^portfolio/description/([0-9a-zA-Z-]+)-([0-9]+)\.html$ ajax.php?module=portfolio&action=description&id=$2&name=$1 [L]
+
+# /MODULE/ACTION GENERAL
+RewriteRule ^([a-z-]+)/([a-z-]+)\.html$ index.php?module=$1&action=$2 [L]
+RewriteRule ^([a-z-]+)/([a-z-]+)/([0-9]+)\.html$ index.php?module=$1&action=$2&id=$3 [L]
+
+#RewriteRule ^([a-z-]+)$ /$1/ [R]
+#RewriteRule ^([a-z-]+)/$ index.php?module=$1 [L]
+#RewriteRule ^([a-z-]+)\.html$ /#$1.html [NE,R]
+
+#IMAGE PORTFOLIO
+#RewriteRule ^portfolio/s([0-9]+)-([0-9a-z-]+).jpg$ /img/portfolios/$2/thumbnails/1.jpg [L]
+#RewriteRule ^portfolio/o([0-9]+)-([0-9a-z-]+)-([0-9]+).jpg$ /img/portfolios/$2/galleries/$3.jpg [L]
+
+
+
+RewriteRule ^error-404.html$ error_404.php [L]
+ErrorDocument 404 /error-404.html
+
+#php_value session.use_trans_sid 0

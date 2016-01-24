@@ -1,0 +1,4 @@
+SetEnv REGISTER_GLOBALS 0
+RewriteEngine on
+#RewriteCond %{HTTP_HOST} ^(pdo-smarty.)?dev$ [NC]
+#RewriteRule ^(.*) http://pdo-smarty.dev/$1 [R=301,L]
