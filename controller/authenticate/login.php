@@ -9,25 +9,31 @@ include_once(MODEL.'user.php');
 
 if($_POST){
 
-    $error  = '';
+    require_once (HELPER.'validation.php');
 
-    $email = (isset($_POST['email'])) ? $_POST['email'] : '';
-    $password = (isset($_POST['password'])) ? $_POST['password'] : '';
+    $rules = array(
+      'email' => 'email|required',
+      'password' => 'required'
+    );
 
-    $email = filter_var($email, FILTER_SANITIZE_EMAIL);
-    $password = strip_tags(trim($password));
+    $validation = new Validation();
 
-    if($email && $password){
+    if($validation->validate($_POST, $rules) == TRUE){
         $user = new User();
-        $status = $user->postLogin($email, $password);
+        $status = $user->postLogin($_POST['email'], $_POST['password']);
         if($status)
             header('location:/user/default.html');
         else
             $error = 'Error on login process.';
-    }else{
-        $error = 'Invalid email or password.';
     }
-    $smarty->assign('error', $error);
+    else{
+        echo '<ul>';
+        foreach($validation->errors as $error){
+            echo '<li>' . $error . '</li>';
+        }
+        echo '</ul>';
+    }
+
 }
 
 $smarty->display(VIEW.'login.tpl');

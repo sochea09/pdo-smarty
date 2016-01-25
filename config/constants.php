@@ -11,6 +11,7 @@
 $module = !empty($_GET['module']) ? $_GET['module'] : 'page';
 
 /**/ define('MODEL', 			MVC_ROOT.'model/');
+/**/ define('HELPER', 			MVC_ROOT.'helper/');
 /**/ define('LAYOUT', 			MVC_ROOT.'view/layout/');
 /**/ define('VIEW',    		    MVC_ROOT.'view/'.$module.'/');
 /**/ define('VIEW_GLOBAL', 	    MVC_ROOT.'view/');
