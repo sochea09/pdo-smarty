@@ -1,8 +1,8 @@
-CREATE DATABASE  IF NOT EXISTS `laravel_blog` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `laravel_blog`;
+CREATE DATABASE  IF NOT EXISTS `pdo_smarty` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `pdo_smarty`;
 -- MySQL dump 10.13  Distrib 5.6.13, for osx10.6 (i386)
 --
--- Host: 127.0.0.1    Database: laravel_blog
+-- Host: 127.0.0.1    Database: pdo_smarty
 -- ------------------------------------------------------
 -- Server version	5.6.26
 
@@ -16,6 +16,34 @@ USE `laravel_blog`;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `POST`
+--
+
+DROP TABLE IF EXISTS `POST`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `POST` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `POST`
+--
+
+LOCK TABLES `POST` WRITE;
+/*!40000 ALTER TABLE `POST` DISABLE KEYS */;
+INSERT INTO `POST` VALUES (1,'first post 1','hello frank hhh','2016-04-02 03:12:25','2016-04-02 04:07:49',NULL),(2,'second post','hello post','2016-04-02 03:23:21','2016-04-02 03:23:21',NULL),(3,'third post','hello frank','2016-04-02 03:25:32','2016-04-02 03:25:32',NULL);
+/*!40000 ALTER TABLE `POST` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `ROLE`
@@ -55,8 +83,8 @@ CREATE TABLE `USERS` (
   `usr_name` varchar(100) NOT NULL,
   `usr_firstname` varchar(45) DEFAULT NULL,
   `usr_lastname` varchar(45) DEFAULT NULL,
-  `usr_email` varchar(100) DEFAULT NULL,
-  `usr_password` varchar(100) DEFAULT NULL,
+  `usr_email` varchar(100) NOT NULL,
+  `usr_password` varchar(100) NOT NULL,
   `usr_active_fg` tinyint(1) DEFAULT '0',
   `usr_pwd_change_fg` tinyint(1) DEFAULT NULL,
   `usr_access_token` varchar(45) DEFAULT NULL,
@@ -68,10 +96,8 @@ CREATE TABLE `USERS` (
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`usr_id`),
   UNIQUE KEY `usr_name_UNIQUE` (`usr_name`),
-  UNIQUE KEY `usr_email_UNIQUE` (`usr_email`),
-  UNIQUE KEY `usr_password_UNIQUE` (`usr_password`),
-  UNIQUE KEY `usr_status_UNIQUE` (`usr_active_fg`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  UNIQUE KEY `usr_email_UNIQUE` (`usr_email`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -80,7 +106,7 @@ CREATE TABLE `USERS` (
 
 LOCK TABLES `USERS` WRITE;
 /*!40000 ALTER TABLE `USERS` DISABLE KEYS */;
-INSERT INTO `USERS` VALUES (2,'Frank',NULL,NULL,'me.sochea@gmail.com','$2y$10$T7fw55d.cuKEm8WdACGD/OSwsKzdI/6mYjEP/NQRwBbQI.ZoiKcJe',1,NULL,'09896387a4f0e399c722b4c5e3988784','3f119997da9fa0ca2785cb05537e6e3b',NULL,1,'2015-12-09 13:35:28','2015-09-19 09:21:50','2015-12-09 13:35:28');
+INSERT INTO `USERS` VALUES (6,'editor',NULL,NULL,'editor@gmail.com','e10adc3949ba59abbe56e057f20f883e',0,NULL,NULL,NULL,NULL,2,NULL,'2016-04-01 12:46:55','2016-04-01 12:46:55');
 /*!40000 ALTER TABLE `USERS` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -93,4 +119,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-01-23 16:23:13
+-- Dump completed on 2016-04-02 14:31:43
