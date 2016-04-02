@@ -10,5 +10,7 @@
 {* Footer *}
 <script type="text/javascript" src="/bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="/javascript/global.js"></script>
+
+{block name='script'}{/block}
 </body>
 </html>

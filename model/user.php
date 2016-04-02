@@ -10,7 +10,11 @@ class User extends Model
 
     function getUser(){
 
-        $sql = "SELECT * FROM USERS";
+        $sql = "SELECT usr.*,
+                       (SELECT ro.rol_desc
+                        FROM ROLE ro
+                        WHERE ro.rol_id = usr.rol_id) AS rol_name
+                FROM USERS usr";
 
         $stmt  = $this->RunQuery($sql);
 
@@ -25,7 +29,7 @@ class User extends Model
             array_push($inputs, $val);
         }
 
-        $sql = "INSERT INTO USERS (".implode(', ', $fields).") VALUES(?, ?, ?, ?)";
+        $sql = "INSERT INTO USERS (".implode(', ', $fields).") VALUES(?, ?, ?, ?, ?, ?)";
 
         $stmt = $this->RunQuery($sql, $inputs);
 

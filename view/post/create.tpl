@@ -1,0 +1,1 @@
+{include file='_form.tpl' buttonAction="postCreatePost()" formId="create-post" buttonTitle="Create"}

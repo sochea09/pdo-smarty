@@ -8,7 +8,7 @@
 /**/ if ($_SERVER['SERVER_NAME'] == 'pdo-smarty.dev'){
 /**/ 	define('SQL_DSN',      'mysql:dbname=pdo_smarty;host=localhost');
 /**/ 	define('SQL_USERNAME', 'root');
-/**/ 	define('SQL_PASSWORD', 'tsc');
+/**/ 	define('SQL_PASSWORD', '');
 /**/ }else{
 /**/    define('SQL_DSN',      'mysql:dbname=pdo_smarty;host=localhost');
 /**/ 	define('SQL_USERNAME', 'root');

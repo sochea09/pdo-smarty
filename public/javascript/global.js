@@ -4,7 +4,8 @@ function ajaxDelete(module, action, id){
         if(id){
             if(confirm('Are you sure you want to delete?')){
                 $.ajax({
-                    url: '/'+module+'/'+action+'.html',
+                    /*url: '/'+module+'/'+action+'.html',*/
+                    url: '/'+'index.php?module='+module+'&action='+action,
                     type: "post",
                     data: {'id': id},
                     success: function(data) {

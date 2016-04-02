@@ -1,0 +1,1 @@
+{include file="_form.tpl" buttonAction="postUpdatePost()" formId="update-post" buttonTitle="Update"}
